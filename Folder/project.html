@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrendMart</title>
+    <link rel="stylesheet" href="project.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+
+</head>
+<body>
+   
+  <header>
+    <div class="navbar" id="navbar">
+      <div class="logo">
+        <img src="logo.jpg" alt="Logo" id="logo-img">
+      </div>
+  
+      <div class="top-bar">
+        <div class="hamburger-menu" id="hamburger-menu">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+  
+      <nav class="nav-items">
+        <a href="#navbar">Home</a>
+        <a href="sellingpage.html">Sell..?</a>
+        <a href="learn.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+  
+      <div class="icon-row">
+        <div class="nav-icons">
+          <div class="wishlist">
+            <i class="fas fa-heart" id="wishIcon" onclick="wishlist()"></i>
+            <span class="wishlist-count">0</span>
+          </div>
+          <div class="cart">
+            <i class="fas fa-shopping-cart" id="cart-icon" onclick="cart()"></i>
+            <span class="cart-count">0</span>
+          </div>
+        </div>
+  
+        <div class="profile-container">
+          <i class="fas fa-user-circle" id="profile-icon"></i>
+          <div class="profile-dropdown" id="profile-dropdown">
+            <p><strong id="user-name"></strong></p>
+            <p id="user-email"></p>
+            <button id="logout-btn">Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+
+  <section class="landing-image-section">
+    <div class="landing-text">
+      <h1>Find Your Style</h1>
+      <p>Discover the trendiest looks handpicked just for you. Whether you're looking for a bold statement or something classic and timeless, we've got something that will match your unique personality.</p>
+           <a href="#shop-our-products" class="landing-button">Start Shopping</a>
+    </div>
+  </section>
+  
+  
+
+          <section class="hero-section">
+            <div class="hero-content">
+                <h1>Ready to declutter your closet?</h1>
+                <button class="sell-btn" id = "heroSellBtn" onclick="sellBtn()">Sell Now</button>
+                <p class="learn-more" id="learnBtn" >Learn how it works</p>
+            </div>
+        </section>
+     
+
+      <section class="categories">
+        <h2>Trending Categories</h2>
+        <div class="category-grid">
+          <div class="category-card">👗 Dresses</div>
+          <div class="category-card">👙 Lingerie</div>
+          <div class="category-card">🕶 Accessories</div>
+          <div class="category-card">💄 Beauty</div>
+          <div class="category-card"> 👟 Sneakers</div>
+        </div>
+      </section>
+      
+      <section class="shop-section" id="lingerie" >
+        <div class="shop-image">
+          <img src="https://www.shutterstock.com/image-photo/woman-choosing-bra-romantic-lingerie-600nw-400197442.jpg" alt="Lingerie Collection" />
+        </div>
+        <div class="shop-content">
+          <h2>Discover Our New Collection</h2>
+          <p>Explore stylish and comfortable picks perfect for any season. Quality guaranteed.</p>
+          <button id="lingerieBtn">Shop Now</button>
+        </div>
+      </section>
+      
+      <section class="shop-section alt">
+        <div class="shop-image">
+          <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c25lYWtlcnxlbnwwfHwwfHx8MA%3D%3D" alt="Sneakers Collection" />
+        </div>
+        <div class="shop-content">
+          <h2>Elevate Your Sneaker Game</h2>
+          <p>Step into the latest trends with comfort and style. Designed for those who dare to stand out.</p>
+          <button id="sneakersBtn">Shop Now</button>
+        </div>
+      </section>
+      
+      <section class="products-section">
+        <h2 class="products-title">What We Sell</h2>
+        <p class="products-subtitle">Curated collections designed to fit your lifestyle</p>
+        
+        <div class="products-grid">
+          <div class="product-card">
+            <img src="https://img.freepik.com/free-photo/female-lingerie-arrangement-still-life_23-2150411299.jpg" alt="Lingerie" />
+            <h3>Lingerie</h3>
+            <p>Elegant & comfortable pieces</p>
+          </div>
+          <div class="product-card">
+            <img src="https://images.unsplash.com/photo-1512374382149-233c42b6a83b?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c25lYWtlcnN8ZW58MHx8MHx8fDA%3D" alt="Sneakers" />
+            <h3>Sneakers</h3>
+            <p>Trendy kicks for all walks</p>
+          </div>
+          <div class="product-card">
+            <img src="https://t4.ftcdn.net/jpg/02/02/39/07/360_F_202390749_8T273Qalaj7HwjvW6W4VSiUsNb753vd2.jpg" alt="Bags" />
+            <h3>Bags</h3>
+            <p>Chic bags for every vibe</p>
+          </div>
+          <div class="product-card">
+            <img src="https://static1.bigstockphoto.com/9/5/1/large2/15976376.jpg" alt="Dresses" />
+            <h3>Dresses</h3>
+            <p>For everyday or events</p>
+          </div>
+        </div>
+      </section>
+
+   
+   
+      <section class="shop-our-products" id="shop-our-products">
+        <div class="product-info">
+          <h2>Need to Shop Our Products?</h2>
+          <p>Browse through our exclusive collection of top-quality, fashion-forward clothing. Whatever your style is, we’ve got something perfect for you!</p>
+          <button class="NewBtn">Explore Now</button>
+        </div>
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2hvcHBpbmd8ZW58MHx8MHx8fDA%3D" alt="Shop Our Products" />
+        </div>
+      </section>
+
+   
+
+ <section class="about2">
+    <div class="about-container">
+      <h2>About <span>TrendMart</span></h2>
+      <p>At TrendMart, we blend convenience with style. Whether you’re looking for the latest gadgets, trendy fashion, or daily essentials – we’ve got you covered. Our goal is to deliver an unmatched shopping experience, right from browsing to doorstep delivery.</p>
+      <div class="about-highlights">
+        <div class="highlight">
+          <i class="fas fa-shipping-fast"></i>
+          <h4>Fast Shipping</h4>
+        </div>
+        <div class="highlight">
+          <i class="fas fa-star"></i>
+          <h4>Quality Products</h4>
+        </div>
+        <div class="highlight">
+          <i class="fas fa-thumbs-up"></i>
+          <h4>Trusted by Thousands</h4>
+        </div>
+      </div>
+    </div>
+  </section>  
+  
+  <section class="scrolling-reviews">
+    <h2>What Our Users Say</h2>
+    <div class="scroll-wrapper">
+      <div class="scroll-track">
+       
+        <div class="review">
+          <img src="https://i.pravatar.cc/100?img=1" alt="">
+          <div>
+            <h3>Priya Sharma</h3>
+            <div class="stars">★★★★★</div>
+            <p>"This app changed the way I manage money. Love the interface!"</p>
+          </div>
+        </div>
+  
+        <div class="review">
+          <img src="https://i.pravatar.cc/100?img=2" alt="">
+          <div>
+            <h3>Ravi Patel</h3>
+            <div class="stars">★★★★☆</div>
+            <p>"Guest login is so useful. Simple and fast!"</p>
+          </div>
+        </div>
+  
+        <div class="review">
+          <img src="https://i.pravatar.cc/100?img=3" alt="">
+          <div>
+            <h3>Anjali Mehta</h3>
+            <div class="stars">★★★★★</div>
+            <p>"Daily challenges are addictive and fun!"</p>
+          </div>
+        </div>
+  
+
+        <div class="review">
+          <img src="https://i.pravatar.cc/100?img=1" alt="">
+          <div>
+            <h3>Priya Sharma</h3>
+            <div class="stars">★★★★★</div>
+            <p>"This app changed the way I manage money. Love the interface!"</p>
+          </div>
+        </div>
+  
+        <div class="review">
+          <img src="https://i.pravatar.cc/100?img=2" alt="">
+          <div>
+            <h3>Ravi Patel</h3>
+            <div class="stars">★★★★☆</div>
+            <p>"Guest login is so useful. Simple and fast!"</p>
+          </div>
+        </div>
+  
+        <div class="review">
+          <img src="https://i.pravatar.cc/100?img=3" alt="">
+          <div>
+            <h3>Anjali Mehta</h3>
+            <div class="stars">★★★★★</div>
+            <p>"Daily challenges are addictive and fun!"</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+ <section class="why-choose">
+    <h2>Why Choose Us</h2>
+    <div class="features">
+      <div class="feature-card">
+        <i class="fas fa-shipping-fast"></i>
+        <h4>Fast Delivery</h4>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-shield-alt"></i>
+        <h4>Secure Payment</h4>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-headset"></i>
+        <h4>24/7 Support</h4>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-tags"></i>
+        <h4>Best Deals</h4>
+      </div>
+    </div>
+  </section>   
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section about">
+               <h2>About Us</h2>
+                <p>Your go-to marketplace for the best deals on quality products. Buy, sell, and discover amazing items with ease.</p> <br>
+                <h2><a href="learn.html" >About</a></h2>
+            </div>
+    
+            <div class="footer-section links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="sellingpage.html">Sale</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-section contact">
+                <h2>Contact Us</h2>
+                <p>Email: support@trendmart.com</p>
+                <p>Phone: +123 456 7890</p>
+                <p>Location: Hyderabad, India</p>
+            </div>
+    
+            <div class="footer-section download">
+                <h2>Download Our App</h2>
+                <a href="https://play.google.com/store" target="_blank">
+                    <img src="gplaystore.png" alt="Google Play Store">
+                </a>
+                <a href="https://www.apple.com/app-store/" target="_blank">
+                    <img src="applestore.png" alt="Apple App Store">
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 TRENDMART. All Rights Reserved.</p>
+        </div>
+    </footer>   
+
+    <script src="project.js" type="module"></script>
+    <script>
+      function sellBtn(){
+        window.location.href = 'sellingpage.html'
+      }
+
+        const user = localStorage.getItem("loggedInUser");
+        console.log("Logged In User:", user); 
+        function wishlist(){
+          window.location.href = 'wishlist.html'
+        }
+        function cart(){
+          window.location.href = 'cart.html'
+        }
+        </script>
+        
+        
+</body>
+</html>

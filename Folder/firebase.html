@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login & Signup</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="firebase.js" type="module"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body, html {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://images.unsplash.com/photo-1685739262365-81b8f725ef75?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+      z-index: -1;
+      filter: brightness(0.7);
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      padding: 15px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 10;
+    }
+
+    .logo img {
+      width: 90px;
+      height: auto;
+      border-radius: 50%;
+      display: none;
+    }
+
+    .menu-icon {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .nav-items {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-items a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .nav-items a:hover {
+      color: #ff5050;
+    }
+
+    .main-content {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      height: 100vh;
+      padding: 0 5%;
+    }
+
+    .container {
+      max-width: 380px;
+      width: 100%;
+      padding: 50px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(15px);
+      border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      color: white;
+      margin-left: 30px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      background: #0072ff;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: #005fcc;
+    }
+
+    .form-box {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    p {
+      font-size: 14px;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    p a {
+      color: #76ff03;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .social-login button {
+      background: #444;
+      margin-top: 8px;
+    }
+
+    .social-login button:nth-child(1) {
+      background: #DB4437;
+    }
+
+    .social-login button:nth-child(2) {
+      background: #3b5998;
+    }
+
+    .social-login button:hover {
+      opacity: 0.9;
+    }
+
+    @media (max-width: 768px) {
+      .main-content {
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .nav-items {
+        display: none;
+        flex-direction: column;
+        background: rgba(0,0,0,0.8);
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        padding: 10px;
+        border-radius: 8px;
+      }
+
+      .nav-items.show {
+        display: flex;
+      }
+
+      .menu-icon {
+        display: block;
+      }
+    }
+
+.container {
+  width: 100%;
+  max-width: 380px;
+  padding: 40px 25px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  color: white;
+  margin-left: 30px;
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .container {
+    margin-left: 0;
+  }
+
+  .nav-items {
+    display: none;
+    flex-direction: column;
+    background: rgba(0,0,0,0.8);
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .nav-items.show {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+}
+@media (max-width: 600px) {
+  .container {
+    padding: 25px 18px;
+    max-width: 70%;
+    height: 80%;
+  }
+
+  input, button {
+    font-size: 13px;
+    height:25px;
+    padding-top: 5px;
+    
+  }
+
+  input{
+    padding-top: 13px;
+  }
+
+  h2 {
+    font-size: 23px;
+  }
+}
+
+
+
+@media (max-width: 400px) {
+  .container {
+    padding: 25px 18px;
+    max-width: 95%;
+    height: 80%;
+  }
+
+  input, button {
+    font-size: 10px;
+    height:20px;
+    padding-top: 3px;
+    
+  }
+
+  input{
+    padding-top: 13px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="logo.jpg" alt="logo">
+    </div>
+    <div class="menu-icon" id="menu-icon">&#9776;</div>
+    <div class="nav-items" id="nav-items">
+      <a href="learn.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+  </header>
+
+  <div class="main-content">
+    <div class="container">
+      <div id="signup-box" class="form-box">
+        <h2>Sign Up</h2>
+        <input type="text" id="signup-name" placeholder="Full Name" autocomplete="off">
+        <input type="email" id="signup-email" placeholder="Email" autocomplete="off">
+        <input type="password" id="signup-password" placeholder="Password" autocomplete="new-password">
+        <button id="signup-btn">Sign Up</button>
+        <p>Already have an account? <a href="#" id="show-login">Login here</a></p>
+      </div>
+
+      <div id="login-box" class="form-box hidden">
+        <h2>Login</h2>
+        <input type="email" id="login-email" placeholder="Email" autocomplete="off">
+        <input type="password" id="login-password" placeholder="Password" autocomplete="new-password">
+        <button id="login-btn">Login</button>
+        <p><a href="#" id="forgot-password">Forgot Password?</a></p>
+        <p>New user? <a href="#" id="show-signup">Create an account</a></p>
+      </div>
+
+      <div class="social-login">
+        <button id="google-login">Login with Google</button>
+        <button id="facebook-login">Login with Facebook</button>
+        <button id="guestLoginBtn">Guest login</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const menuIcon = document.getElementById("menu-icon");
+    const navItems = document.getElementById("nav-items");
+
+    menuIcon.addEventListener("click", () => {
+      navItems.classList.toggle("show");
+    });
+
+    document.getElementById("show-login").addEventListener("click", () => {
+      document.getElementById("signup-box").classList.add("hidden");
+      document.getElementById("login-box").classList.remove("hidden");
+    });
+
+    document.getElementById("show-signup").addEventListener("click", () => {
+      document.getElementById("login-box").classList.add("hidden");
+      document.getElementById("signup-box").classList.remove("hidden");
+    });
+  </script>
+</body>
+</html>

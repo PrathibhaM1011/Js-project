@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Secure Payment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to right, #e3f2fd, #ffffff);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .payment-container {
+      background: white;
+      max-width: 400px;
+      width: 90%;
+      padding: 30px 25px;
+      border-radius: 16px;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+    }
+
+    .payment-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #1e1e2f;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #444;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+      transition: 0.2s ease;
+    }
+
+    .form-group input:focus {
+      border-color: #007bff;
+      box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.15);
+    }
+
+    .total-amount {
+      text-align: right;
+      font-size: 18px;
+      margin: 15px 0;
+      font-weight: bold;
+      color: #2b2b2b;
+    }
+
+    .btn-pay {
+      width: 100%;
+      background: #007bff;
+      color: white;
+      padding: 12px;
+      border: none;
+      font-size: 16px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .btn-pay:hover {
+      background: #0056cc;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #ff5252;
+      color: white;
+      padding: 12px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+
+    .toast.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    @media (max-width: 400px) {
+      .payment-container {
+        padding: 25px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="payment-container">
+    <h2>Secure Payment</h2>
+    <div class="form-group">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" placeholder="John Doe" />
+    </div>
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="john@example.com" />
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="text" id="phone" placeholder="123-456-7890" />
+    </div>
+    <div class="form-group">
+      <label for="address">Shipping Address</label>
+      <input type="text" id="address" placeholder="123 Street, City, Country" />
+    </div>
+    <div class="total-amount">Total: <span id="totalPrice">$0.00</span></div>
+    <button class="btn-pay" onclick="makePayment()">Confirm Order</button>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const cartItems = JSON.parse(localStorage.getItem("cartItems") || "[]");
+    const total = cartItems.reduce((acc, item) => {
+      return acc + (parseFloat(item.price?.amount?.amount || 0) * (item.quantity || 1));
+    }, 0);
+    document.getElementById("totalPrice").textContent = "$" + total.toFixed(2);
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 2500);
+    }
+
+    function makePayment() {
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const address = document.getElementById("address").value.trim();
+
+      if (!name || !email || !phone || !address) {
+        showToast("Please fill in all fields.");
+        return;
+      }
+
+      if (!/^\S+@\S+\.\S+$/.test(email)) {
+        showToast("Enter a valid email address.");
+        return;
+      }
+
+      if (!/^\d{10}$/.test(phone.replace(/[^0-9]/g, ""))) {
+        showToast("Enter a valid 10-digit phone number.");
+        return;
+      }
+
+      const paymentDetails = {
+        name,
+        email,
+        phone,
+        address,
+        totalAmount: total.toFixed(2)
+      };
+
+     
+      localStorage.setItem("paymentDetails", JSON.stringify(paymentDetails));
+      sessionStorage.setItem("confirmedCart", JSON.stringify(cartItems));
+
+     
+      localStorage.removeItem("cartItems");
+
+      
+      window.location.href = "order_confirmation.html";
+    }
+  </script>
+</body>
+</html>

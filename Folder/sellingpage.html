@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sell Your Clothes</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Header Section */
+header {
+    background-color: #ffffff; /* White background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px 20px;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    /* align-items: center; */
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Logo Styling */
+.logo img {
+    height: 70px;
+    border-radius: 50%;
+}
+
+/* Navigation Bar */
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333; /* Dark text for contrast */
+    font-weight: bold;
+    padding: 8px 12px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ff6600; /* Highlight color on hover */
+}
+
+/* Search Bar */
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 2px solid #ddd;
+    border-radius: 25px;
+    padding: 5px 10px;
+    background-color: #f9f9f9;
+}
+
+#searchBar {
+    border: 1px solid #007b6d;
+    border-radius: 15px;
+    outline: none;
+    padding: 5px 10px;
+    width: 300px;
+    height: 30px;
+    background: transparent;
+}
+
+/* Catalog Dropdown */
+.dropdown {
+    position: relative;
+}
+
+.dropbtn {
+    background: none;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 8px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    min-width: 150px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.dropdown-content a:hover {
+    background-color: #ff6600;
+    color: #fff;
+}
+
+/* Sell Button */
+#sellbtn {
+    background-color: #ff6600;
+    color: #ffffff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#sellbtn:hover {
+    background-color: #e65c00;
+}
+
+/* Actions Section Styling */
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.actions a {
+    text-decoration: none;
+    color: #00796b;
+    font-weight: bold;
+    padding: 8px 15px;
+    border: 2px solid #00796b;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+.actions a:hover {
+    background-color: #00796b;
+    color: white;
+}
+
+.actions button {
+    background-color: #77fb0bce;
+    color: white;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.actions button:hover {
+    background-color: #e65c00;
+    transform: scale(1.05);
+}
+
+.cart {
+    font-size: 24px;
+    color: #00796b;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.cart:hover {
+    color: #ff6600;
+    transform: scale(1.2);
+}
+
+/* Form Styling */
+.container {
+    padding: 20px;
+    text-align: center;
+}
+
+form {
+    max-width: 400px;
+    margin: auto;
+    text-align: left;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+label,
+input,
+textarea {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+
+input,
+textarea {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    padding-right: 10px;
+    margin-right: 10px;
+}
+
+button {
+    background: #28a745;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 15px;
+    width: 100%;
+}
+
+button:hover {
+    background: #218838;
+}
+
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    #searchBar {
+        width: 100%;
+    }
+
+    .actions {
+        justify-content: center;
+    }
+
+    form {
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo img {
+        height: 50px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    #sellbtn {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    button {
+        font-size: 14px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo">
+        </div>
+        <nav class="nav-links">
+            <a href="project.html">Home</a>
+            <a href="learn.html">About</a>
+            <a href="productdetails.html">Products</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <div class="actions">
+            <button id="sellbtn">Buy Now</button>
+        </div>
+    </header>
+    
+    <div class="container">
+        <h1>Sell Your Clothes</h1>
+        
+        <form id="sell-form">
+            <label for="name">Cloth Name:</label>
+            <input type="text" id="name" required>
+            
+            <label for="brand">Brand:</label>
+            <textarea id="brand" required></textarea>
+            
+            <label for="status">Status:</label>
+            <input type="text" id="status" required>
+            
+            
+            <label for="price">Cost ($):</label>
+            <input type="number" id="price" required>
+
+            <label for="category">Category ($):</label>
+            <input type="text" id="category" required placeholder="Beauty, Accessories, Lingerie..">
+            
+            <label for="image">Upload Image:</label>
+            <input type="file" id="image" accept="image/*" required>
+            <img id="preview" style="margin-top: 10px; max-width: 200px;" />
+
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('sell-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+    
+            let name = document.getElementById('name').value;
+            let brand = document.getElementById('brand').value;
+            let status = document.getElementById('status').value;
+            let price = document.getElementById('price').value;
+            let category = document.getElementById('category').value;
+            let imageFile = document.getElementById('image').files[0];
+            let imageUrl = imageFile ? URL.createObjectURL(imageFile) : "";
+    
+            let listing = {
+                title: name,
+                brand: brand,
+                status: status,
+                category: category,
+                price: {
+                    amount: { amount: price, currency_code: "USD" },
+                    totalAmount: { amount: (parseFloat(price) + 1.2).toFixed(2), currency_code: "USD" },
+                    fees: { amount: "1.2", currency_code: "USD" }
+                },
+                image: imageUrl,
+            };
+    
+            let products = JSON.parse(localStorage.getItem('products')) || [];
+            products.push(listing);
+            localStorage.setItem('products', JSON.stringify(products));
+    
+            alert('Item added to local storage');
+            window.location.href = "project.html";
+        });
+    
+        document.getElementById('image').addEventListener('change', function() {
+            let preview = document.getElementById('preview');
+            let file = this.files[0];
+            if (file) {
+                preview.src = URL.createObjectURL(file);
+            }
+        });
+    </script>
+    
+</body>
+</html>

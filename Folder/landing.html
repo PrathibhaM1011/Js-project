@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thrift Store Landing</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      width: 100%;
+      font-family: Arial, sans-serif;
+    }
+
+    .main {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
+
+    .background {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: brightness(0.5);
+    }
+
+    .overlay-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    .overlay-text h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    .overlay-text p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      line-height: 1.5;
+    }
+
+    .overlay-text button {
+      padding: 14px 35px;
+      font-size: 1rem;
+      background-color: #00c897;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s;
+    }
+
+    .overlay-text button:hover {
+      background-color: #009e76;
+      transform: scale(1.05);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .overlay-text h1 {
+        font-size: 2rem;
+      }
+
+      .overlay-text p {
+        font-size: 1rem;
+      }
+
+      .overlay-text button {
+        padding: 12px 28px;
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .background {
+        content: url('https://www.shutterstock.com/shutterstock/videos/1069009456/thumb/1.jpg?ip=x480');
+      }
+
+      .overlay-text h1 {
+        font-size: 1.4rem;
+      }
+
+      .overlay-text p {
+        font-size: 0.9rem;
+      }
+
+      .overlay-text button {
+        padding: 10px 22px;
+        font-size: 0.85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <img class="background"
+      src="https://img.freepik.com/free-photo/3d-illustration-smartphone-with-products-coming-out-screen-online-shopping-e-commerce-concept_58466-14529.jpg?t=st=1744696325~exp=1744699925~hmac=d0d966c59f163276d79bcb35ae0310cb2b9895eecff6112b59ca9b402df0fec3&w=1380"
+      alt="E-commerce image" />
+
+    <div class="overlay-text">
+      <h1>Hey! Want to Sell Your Used Clothes or Shop Thrift?</h1>
+      <p>Your one-stop destination for sustainable fashion. Start your journey now!</p>
+      <button onclick="window.location.href='firebase.html'">Start →</button>
+    </div>
+  </div>
+</body>
+</html>

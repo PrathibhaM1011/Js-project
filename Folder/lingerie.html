@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lingerie Collection</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Navbar */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: white;
+      padding: 10px 20px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo img {
+      height: 50px;
+      width: auto;
+      border-radius: 8px;
+    }
+
+    .nav-items {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      position: relative;
+    }
+
+    .nav-items a {
+      color: #333;
+      text-decoration: none;
+      font-size: 18px;
+      position: relative;
+    }
+
+    .nav-items a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background-color: #ff6b81;
+      left: 0;
+      bottom: -4px;
+      transition: 0.3s;
+    }
+
+    .nav-items a:hover::after {
+      width: 100%;
+    }
+
+    /* Hamburger Menu */
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      color: #333;
+      cursor: pointer;
+    }
+
+    /* Lingerie Section */
+    .lingerie-products {
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .lingerie-products h1 {
+      font-size: 36px;
+      color: #ff6b81;
+      margin-bottom: 30px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      padding: 0 20px;
+    }
+
+    .product-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+      transition: 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    .product-card h3 {
+      font-size: 20px;
+      color: #222;
+      margin-bottom: 10px;
+    }
+
+    .product-card p {
+      font-size: 14px;
+      color: #666;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #333;
+      color: white;
+      padding: 40px 20px 20px;
+      margin-top: 40px;
+    }
+
+    .footer-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+      margin-bottom: 20px;
+    }
+
+    .footer-section h2 {
+      margin-bottom: 15px;
+      color: #ff6b81;
+    }
+
+    .footer-section p,
+    .footer-section ul {
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .footer-section ul li a {
+      color: rgb(248, 243, 243);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-section ul li a:hover {
+      color: #ff6b81;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-items {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        width: 160px;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        padding: 10px 0;
+        animation: slideIn 0.3s ease forwards;
+      }
+
+      .nav-items.active {
+        display: flex;
+      }
+
+      .nav-items a {
+        padding: 10px;
+        margin: 0;
+        font-size: 16px;
+        text-align: center;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <img src="logo.jpg" alt="Logo" />
+      </div>
+      <div class="menu-toggle" id="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <nav class="nav-items" id="nav-items">
+        <a href="project.html">Home</a>
+        <a href="sellingpage.html">Sell..?</a>
+        <a href="learn.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="lingerie-products">
+    <h1>Lingerie Collection</h1>
+    <div class="products-grid" id="lingerie-products-container">
+      <!-- Dynamic products will load here -->
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-container">
+      <div class="footer-section about">
+        <h2>About Us</h2>
+        <p>Your go-to marketplace for the best deals on quality products. Buy, sell, and discover amazing items with ease.</p>
+      </div>
+      <div class="footer-section links">
+        <h2>Quick Links</h2>
+        <ul>
+          <li><a href="project.html">Home</a></li>
+          <li><a href="sellingpage.html">Sell</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2025 TRENDMART. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // Hamburger Menu
+      const menuToggle = document.getElementById("menu-toggle");
+      const navItems = document.getElementById("nav-items");
+
+      menuToggle.addEventListener("click", () => {
+        navItems.classList.toggle("active");
+      });
+
+      
+      const container = document.getElementById("lingerie-products-container");
+      const products = JSON.parse(localStorage.getItem("products")) || [];
+
+      const lingerie = products.filter(p => /Lingerie/i.test(p.category));
+
+      if (lingerie.length > 0) {
+        lingerie.forEach(product => {
+          const card = document.createElement("div");
+          card.classList.add("product-card");
+
+          card.innerHTML = `
+            <img src="${product.image}" alt="${product.title}" />
+            <h3>${product.title}</h3>
+            <p>${product.description || "No description available"}</p>
+          `;
+
+          container.appendChild(card);
+        });
+      } else {
+        container.innerHTML = "<p>No lingerie products found.</p>";
+      }
+    });
+  </script>
+</body>
+</html>

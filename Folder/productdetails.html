@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Arial', sans-serif;
+    }
+
+    body {
+        background-color: #f8f4f4;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        min-height: 100vh;
+        overflow: visible;
+    }
+
+    /* Navbar Style */
+    .navbar {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #e0c6c6;
+        padding: 20px 40px;
+        color: white;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar .logo img {
+        height: 50px;
+        border-radius: 50%;
+        transition: transform 0.3s;
+    }
+
+    .navbar .logo img:hover {
+        transform: scale(1.1);
+    }
+
+    .navbar .nav-items {
+        display: flex;
+        gap: 30px;
+    }
+
+    .nav-items a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        font-weight: bold;
+        transition: color 0.3s;
+    }
+
+    .nav-items a:hover {
+        color: #007bff;
+    }
+
+    .nav-icons {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .nav-icons i {
+        font-size: 24px;
+        cursor: pointer;
+        transition: color 0.3s;
+    }
+
+    .nav-icons i:hover {
+        color: #007bff;
+    }
+
+    /* Product Card Layout */
+    .product-container {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        padding: 50px 20px;
+        width: 100%;
+        max-width: 1200px;
+        flex-wrap: wrap;
+    }
+
+    .product-card {
+        background: white;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+        text-align: center;
+        width: 100%;
+        max-width: 900px;
+    }
+
+    .product-card:hover {
+        transform: translateY(-10px);
+    }
+
+    #product-image {
+        width: 350px;
+        height: 350px;
+        border-radius: 5px;
+        object-fit: cover;
+        transition: transform 0.3s;
+        margin-right: 20px;
+    }
+
+    .product-card:hover #product-image {
+        transform: scale(1.1);
+    }
+
+    .product-details {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 20px;
+        line-height: 35px;
+    }
+
+    .product-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin: 10px 0;
+    }
+
+    .price {
+        font-size: 20px;
+        color: #28a745;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background 0.3s;
+    }
+
+    button:hover {
+        background: #0056b3;
+    }
+
+    /* Footer Style */
+    footer {
+        background: #333;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        margin-top: 30px;
+        width: 100%;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .product-container {
+            flex-direction: column;
+            padding: 20px;
+        }
+
+        .product-card {
+            flex-direction: column;
+            align-items: center;
+            padding: 15px;
+        }
+
+        #product-image {
+            width: 250px;
+            height: 250px;
+        }
+
+        .product-details {
+            text-align: center;
+            padding-left: 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .navbar {
+            flex-direction: column;
+            padding: 10px;
+            align-items: center;
+        }
+
+        .nav-items {
+            gap: 10px;
+            text-align: center;
+        }
+
+        .product-card {
+            width: 100%;
+            padding: 10px;
+        }
+
+        .product-title {
+            font-size: 20px;
+        }
+
+        .price {
+            font-size: 18px;
+        }
+
+        button {
+            font-size: 14px;
+            padding: 8px 15px;
+        }
+
+        footer {
+            font-size: 14px;
+            padding: 10px;
+        }
+    }
+</style>
+
+<body>
+    <nav class="navbar">
+        <div class="logo">           
+        <img src="logo.jpg">  </div>
+        <div class="nav-items">
+                    <a href="project.html">Home</a>                    
+                    <a href="contact.html">Contact</a>
+                    <a href="privacy.html">Privacy Policy</a>
+        </div>
+        <div class="nav-icons">
+            <div class="wishlist">
+                <i class="fas fa-heart" id="wishIcon" onclick="wishBtn()"></i>
+                <span class="wishlist-count" >0</span>
+            </div>
+            <div class="cart">
+                <i class="fas fa-shopping-cart" onclick="button()"></i>
+                <span class="cart-count">0</span>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="product-container">
+        <div class="product-image">
+            <img id="product-image" src="" alt="Product Image">
+        </div>
+        <div class="product-details">
+            <h2 id="product-title" class="product-title">Product Name</h2>
+            <p id="product-price" class="product-price">$0.00</p>
+            <p id="product-description" class="product-description">You Get a High Quality Product Here</p>
+            <div class="button-container">
+                <button id="buy-btn" class="buy-btn">Buy Now</button>
+                <button id="wishlist-btn" class="wishlist-btn" >Add to Wishlist</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Your Company. All rights reserved.</p>
+    </footer>
+
+    
+    <script>
+        function updateCartCount() {
+            let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+            document.querySelector(".cart-count").innerText = cartItems.length;
+        }
+
+        function updateWishlistCount() {
+            let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+            document.querySelector(".wishlist-count").innerText = wishlist.length;
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const product = JSON.parse(localStorage.getItem("selectedProduct"));
+            console.log("Loaded Product:", product);
+            if (!product) {
+                alert("No product selected!");
+                window.location.href = "project.html";
+                return;
+            }
+
+            document.getElementById("product-image").src = product.image;
+            document.getElementById("product-title").innerText = product.title;
+            document.getElementById("product-price").innerText = `$${product.price.amount.amount}`;
+
+                // Use this (safer and works with multiple formats)
+                const price = typeof product.price === "object"
+                ? (product.price.amount ?? product.price.amount?.amount ?? 0)
+                : product.price;
+
+                document.getElementById("product-price").innerText = `$${price}`;
+          
+
+            updateCartCount();
+            updateWishlistCount();
+            
+            document.getElementById("wishlist-btn").addEventListener("click", () => {
+                let wishlist = JSON.parse(localStorage.getItem("wishlist")) || [];
+                if (!wishlist.some(item => item.title === product.title)) {
+                    wishlist.push(product);
+                    localStorage.setItem("wishlist", JSON.stringify(wishlist));
+                    updateWishlistCount();
+                    
+                    showToast("Added to Wishlist", "success")
+                } else {
+                    showToast("Already in wishlist", "error")
+                }
+            });
+
+            document.getElementById("buy-btn").addEventListener("click", () => {
+                let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+                cartItems.push(product);
+                localStorage.setItem("cartItems", JSON.stringify(cartItems));
+                updateCartCount();
+                showToast("Added to cart", "info")
+            });
+        });
+        
+
+function showToast(message, type = "success") {
+    Swal.fire({
+        toast: true,
+        position: "top-end",
+        icon: type, // "success" | "error" | "warning" | "info"
+        title: message,
+        showConfirmButton: false,
+        timer: 2000
+    });}
+
+    function button(){
+        window.location.href = 'cart.html'
+    }
+    function wishBtn(){
+        window.location.href = 'wishlist.html'
+    }
+    </script>
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Sell & Shop</title>
+    <style>
+        /* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f8f9fa;
+    color: #333;
+    text-align: center;
+}
+
+/* Header */
+header {
+    background-color: #a40df6;
+    color: white;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Hero Section */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #e3f2fd;
+    /* padding: 50px; */
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.hero img.hero-image {
+    width: 100%;
+    /* max-width: 400px; */
+    border-radius: 10px;
+    height:600px;
+}
+
+.hero-text {
+    position: absolute;
+    max-width: 500px;
+    text-align: left;
+    right:45px;
+}
+
+.hero-text h2 {
+    font-size: 32px;
+    color: #ffffff;
+}
+
+.hero-text p {
+    font-size: 18px;
+    color: #555;
+}
+
+/* Steps Sections */
+.steps-section {
+    margin: 50px 20px;
+}
+
+.steps-section h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.steps {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.step {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 250px;
+    text-align: center;
+}
+
+.step img {
+    width: 250px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+/* CTA Section */
+.cta {
+    background-color: #479cae;
+    color: white;
+    margin-bottom: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cta img {
+    width: 100%;
+    height:500px;
+    margin-bottom: 20px;
+}
+
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 10px;
+}
+
+.cta-buttons button {
+    background-color: white;
+    color: #007bff;
+    border: none;
+    padding: 15px 25px;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.cta-buttons .sell-btn:hover {
+    background-color: #0056b3;
+    color: white;
+}
+
+.cta-buttons .buy-btn:hover {
+    background-color: #28a745;
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero img.hero-image {
+        width: 80%;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+
+    .steps {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+footer {
+    background: #222;
+    color: #fff;
+    padding: 40px 0;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+
+.footer-section h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #f8b400;
+}
+
+.footer-section p {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    text-decoration: none;
+    color: #ccc;
+    transition: 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #f8b400;
+}
+
+/* Download Section */
+.footer-section.download img {
+    width: 150px;
+    margin: 5px 10px 0 0;
+    transition: transform 0.3s ease-in-out;
+}
+
+.footer-section.download img:hover {
+    transform: scale(1.1);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 10px;
+    background: #111;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+        .hero {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .hero img.hero-image {
+            width: 100%;
+            height: auto;
+            content: url('https://static.vecteezy.com/system/resources/previews/048/912/302/non_2x/excited-girl-open-up-shopping-bags-and-gasping-amazed-checking-out-gifts-for-her-with-happy-face-standing-against-pink-background-photo.jpg'); /* Default image for smaller screens */
+        }
+
+        .hero-text {
+            position: static;
+            text-align: center;
+            margin-top: 20px;
+        }
+    }
+@media (max-width: 480px) {
+        .hero img.hero-image {
+            content: url('https://media.istockphoto.com/id/1347632685/photo/beautiful-caucasian-female-is-using-smartphone-with-clothing-online-web-store-to-choose-and.jpg?s=612x612&w=0&k=20&c=J2lL7bKiGNxSQyyi42B2dXEj0jqzJBgN7u3yScbjBaE=');
+        }
+
+        .hero-text{
+            position:absolute ;
+            color:black;
+            opacity: 1;
+            left:10px;
+            border-radius: 10px
+        }
+        .hero-text h2 {
+            font-size: 24px;
+            color: #007bff;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            color: #111;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .cta img {
+            content: url('https://static.vecteezy.com/system/resources/previews/048/912/302/non_2x/excited-girl-open-up-shopping-bags-and-gasping-amazed-checking-out-gifts-for-her-with-happy-face-standing-against-pink-background-photo.jpg'); /* Image for tablets */
+            height: 150px;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .cta img {
+            content: url('https://img.freepik.com/free-photo/empty-boutique-shopping-centre_482257-78792.jpg?semt=ais_hybrid&w=740'); /* Image for mobile */
+            height: auto;
+        }
+    }
+
+    </style>
+
+</head>
+<body>
+    <header>
+        <h1>How to Sell & Shop</h1>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <img src="https://static.vecteezy.com/system/resources/previews/048/912/302/non_2x/excited-girl-open-up-shopping-bags-and-gasping-amazed-checking-out-gifts-for-her-with-happy-face-standing-against-pink-background-photo.jpg" alt="Hero Image" class="hero-image">
+        <div class="hero-text">
+            <h2>Start Selling & Shopping with Ease!</h2>
+            <p>Join our marketplace to reach customers worldwide or find the best products at amazing prices.</p>
+        </div>
+    </section>
+    
+    <!-- How to Sell Section -->
+    <section class="steps-section">
+        <h2>How to Sell Your Products</h2>
+        <div class="steps">
+            <div class="step">
+                <img src="https://marketplace-web-assets.vinted.com/assets/how-it-works/desktops@2x/how-to-sell-step1.png" alt="Step 1">
+                <p>Step 1: Register as a seller</p>
+            </div>
+            <div class="step">
+                <img src="https://marketplace-web-assets.vinted.com/assets/how-it-works/desktops@2x/how-to-sell-step2.png" alt="Step 2">
+                <p>Step 2: List your products</p>
+            </div>
+            <div class="step">
+                <img src="https://marketplace-web-assets.vinted.com/assets/how-it-works/desktops@2x/how-to-sell-step3.png" alt="Step 3">
+                <p>Step 3: Start selling & earning</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Shop Section -->
+    <section class="steps-section">
+        <h2>How to Shop Our Products</h2>
+        <div class="steps">
+            <div class="step">
+                <img src="https://marketplace-web-assets.vinted.com/assets/how-it-works/desktops@2x/shopping-step1.png" alt="Step 1">
+                <p>Step 1: Browse our collections</p>
+            </div>
+            <div class="step">
+                <img src="https://marketplace-web-assets.vinted.com/assets/how-it-works/desktops@2x/shopping-step2.png" alt="Step 2">
+                <p>Step 2: Add to cart & checkout</p>
+            </div>
+            <div class="step">
+                <img src="https://marketplace-web-assets.vinted.com/assets/how-it-works/desktops@2x/shopping-step3.png" alt="Step 3">
+                <p>Step 3: Receive & enjoy your order</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta">
+        <img src="https://www.shutterstock.com/image-vector/happy-young-people-waving-hands-260nw-1996083548.jpg" alt="Join Us">
+        <div class="cta-buttons">
+            <button class="sell-btn" onclick="sellingOpen()">Start Selling</button>
+            <button class="buy-btn" onclick="buyingOpen()">Start Shopping</button>
+        </div>
+    </section>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section about">
+                <h2>About Us</h2>
+                <p>Your go-to marketplace for the best deals on quality products. Buy, sell, and discover amazing items with ease.</p>
+            </div>
+    
+            <div class="footer-section links">
+                <h2>Quick Links</h2>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">Categories</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+    
+            <div class="footer-section contact">
+                <h2>Contact Us</h2>
+                <p>Email: support@yourwebsite.com</p>
+                <p>Phone: +123 456 7890</p>
+                <p>Location: City, Country</p>
+            </div>
+    
+            <div class="footer-section download">
+                <h2>Download Our App</h2>
+                <a href="https://play.google.com/store" target="_blank">
+                    <img src="gplaystore.png" alt="Google Play Store">
+                </a>
+                <a href="https://www.apple.com/app-store/" target="_blank">
+                    <img src="applestore.png" alt="Apple App Store">
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 YourWebsite. All Rights Reserved.</p>
+        </div>
+    </footer> 
+
+    <script>
+        function sellingOpen(){
+            window.location.href = "sellingpage.html"
+        }
+
+        function buyingOpen(){
+            window.location.href = "project.html"
+        }
+    </script>
+</body>
+</html>
